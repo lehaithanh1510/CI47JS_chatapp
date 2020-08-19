@@ -1,0 +1,27 @@
+.register_container {
+    height : 100vh;
+    background-image: url(../IMG/background_register.jpg);
+    background-size:cover;
+    display: flex ;
+    justify-content: flex-end;
+}
+.register_container #register_form {
+    height : 100vh;
+    background-color: white;
+    width: 30%;
+    padding: 50px 15px ;
+    
+}
+.register_container .register_header {
+    font-size: 40px;
+    color: grey;
+    text-align: center;
+    font-weight: 600;
+    font-family: sans-serif;
+    margin-bottom: 20px;
+}
+.name_wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+

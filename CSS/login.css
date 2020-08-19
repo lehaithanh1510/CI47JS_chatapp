@@ -1,0 +1,21 @@
+.login_container{ 
+    height: 100vh;
+    background-image: url(../IMG/background_login.jpg);
+    background-size: cover;
+    display : flex;
+    justify-content: flex-end;
+}
+.login_container #login_form {
+    height: 100vh;
+    background-color: white;
+    width: 30%;
+    padding: 50px 15px;
+}
+.login_header {
+    font-size: 40px;
+    color: grey;
+    text-align: center;
+    font-weight: 600;
+    font-family: sans-serif;
+    margin-bottom: 20px;
+}
