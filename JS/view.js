@@ -38,5 +38,13 @@ view.setActiveScreen = (screenName) => {
          document.getElementById('register_change').onclick = () => {
              view.setActiveScreen('registerPage')
          }
+        break;
+        case 'chatPage' :
+            document.getElementById('app').innerHTML = component.chatPage 
+            document.getElementById('welcome_user').innerText = `Welcome ${model.currentUser.displayName}`
+        break;
     }
+}
+view.setErrorMessage = (elementId,content) => {
+    document.getElementById(elementId).innerText = content
 }

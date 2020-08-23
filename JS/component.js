@@ -53,3 +53,6 @@ component.logInPage = `
         </form> 
     </div> 
 `
+component.chatPage = `
+        <div class="welcome" id ="welcome_user" > </div> 
+`
