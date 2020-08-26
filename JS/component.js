@@ -1,7 +1,7 @@
 const component = {
 
 }
-component. welcomePage = `<h1> Welcome to my chat app <h1>`
+component.welcomePage = `<h1> Welcome to my chat app <h1>`
 component.registerPage = `
     <div class="register_container">
         <form id="register_form">
@@ -54,5 +54,19 @@ component.logInPage = `
     </div> 
 `
 component.chatPage = `
-        <div class="welcome" id ="welcome_user" > </div> 
+        <div class="chat_container">
+        <div class="header"> MindX chat </div>
+        <div class="main">
+            <div class="conversation_detail"> 
+                <div class="conversation_title"> Fisrt conversation</div>
+                <div class="list_messages"></div>
+                <form id = "send_messages_form">
+                    <div class="input_wrapper">
+                        <input type="text" placeholder="Type a message" name = 'message'> </input>
+                    </div>
+                    <button type = 'submit'> <i class="fas fa-paper-plane fa-2x"></i> </button>
+                </form>
+            </div>
+        </div>
+    </div>
 `

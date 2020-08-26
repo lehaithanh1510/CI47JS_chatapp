@@ -12,5 +12,25 @@ window.onload = () => {
     }; // Initialize Firebase   
     firebase . initializeApp ( firebaseConfig );
     console.log (firebase.app())
-    view.setActiveScreen('registerPage')
+    firebase.auth().onAuthStateChanged((user) => {
+        console.log(user)
+        if (user) {
+            model.currentUser= {
+                displayName : user.displayName,
+                email: user.email,
+            }
+            if (user.emailVerified) {
+                view.setActiveScreen('chatPage')
+            }
+            else {
+                alert ('Please verify your email')
+                firebase.auth().signOut()
+                view.setActiveScreen('logInPage')
+            }
+            
+        }
+        else {
+            view.setActiveScreen('registerPage')
+        }
+    }) 
 }
