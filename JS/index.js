@@ -32,5 +32,49 @@ window.onload = () => {
         else {
             view.setActiveScreen('registerPage')
         }
-    }) 
+    })
+    // templateFirestore() 
+}
+
+const  templateFirestore = async () => {
+    // get one 
+    const docId = 'v42YrxVF1PYXa162y8Fk'
+    const  response = await firebase.firestore().collection('users').doc(docId).get()
+    // console.log(response)
+    const user = getOneDocument(response)
+    // console.log(user)
+    // get many 
+    const responseMany = await firebase.firestore().collection('users').where('age','==',18).get()
+    // console.log(responseMany)
+    console.log(responseMany)
+    const users = getManyDocument(responseMany)
+    console.log(users)
+    //create 
+    const dataToCreate = {
+        age : 100,
+        name : 'ABC'
+    }
+    // firebase.firestore().collection('users').add(dataToCreate)
+    //update 
+    const idToUpdate = 'v42YrxVF1PYXa162y8Fk'
+    const dataToUpdate = {
+        name : 'Updated',
+        phone : firebase.firestore.FieldValue.arrayUnion('0982'),
+    }
+    firebase.firestore().collection('users').doc(idToUpdate).update(dataToUpdate)
+    // delete 
+    const idToDelete = 'GZygXVSeoghrJei3z0E5'
+    firebase.firestore().collection('users').doc(idToDelete).delete()
+}
+const getManyDocument = (response) => {
+    const listData = []
+    for (const doc of response.docs) {
+        listData.push(getOneDocument(doc))
+    }
+    return listData
+} 
+const getOneDocument = (response) => {
+    const data = response.data() 
+    data.id = response.id
+    return data
 }

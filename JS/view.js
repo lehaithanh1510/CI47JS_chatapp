@@ -41,6 +41,7 @@ view.setActiveScreen = (screenName) => {
             break;
         case 'chatPage':
             document.getElementById('app').innerHTML = component.chatPage
+            model.getInfoFromDatabase()
             const sendMessageForm = document.getElementById('send_messages_form')
             sendMessageForm.addEventListener('submit', (e) => {
                 e.preventDefault()
@@ -53,7 +54,7 @@ view.setActiveScreen = (screenName) => {
                     content: sendMessageForm.message.value,
                     owner: 'Bot'
                 }
-                if (message.content !== '') {
+                if (message.content.trim() !== '') {
                     console.log('haha')
                     view.addMessage(message)
                     view.addMessage(messageFromBot)

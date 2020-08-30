@@ -35,13 +35,16 @@
 .chat_container .list_messages {
     flex-grow: 1;
     padding : 10px;
-
+    overflow-y: auto;
 }
 .chat_container #send_messages_form {
     position: relative;
 }
 #send_messages_form button {
     position: absolute;
+    border : none;
+    background : transparent ;
+    color : #007cfd;
     right: 10px;
     top: 0px;
     width : 3%;
@@ -54,7 +57,7 @@
     padding : 22px 20px ; 
 }
 .list_messages .message .content {
-    width : max-content;
+    width : max-content; 
     padding: 4px 8px;
     border-radius: 4px;
     max-width: 45%;
@@ -63,6 +66,7 @@
     background-color: #007cfd;
     color: #fff;
     margin-bottom: 10px;
+    word-break: break-all;
 }
 .list_messages .message.my {
     display: flex;
