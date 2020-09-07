@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="CSS/chat.css" >
+    <link rel="stylesheet" href="CSS/chat.css">
     <link rel="stylesheet" href="CSS/register.css">
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/login.css">
-    
+
 </head>
 
 <body>
@@ -62,29 +62,59 @@
         </form> 
     </div> -->
     <!-- <div class="welcome" id ="welcome_user" > ABCXYZ </div>  -->
-    <div class="chat_container">
+    <!-- <div class="chat_container">
         <div class="header"> MindX chat </div>
         <div class="main">
-            <div class="conversation_detail"> 
-                <div class="conversation_title"> Fisrt conversation</div>
-                <div class="list_messages">
-                    <div class="message my">
-                        <div class="content"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae explicabo, illo commodi eum enim sed ea rerum quis beatae inventore! Tenetur totam dolores alias sed rerum incidunt quae ad libero! </div>
-                    </div>
-                    <div class="message their">
-                        <div class="owner">abc@gmail.com</div>
-                        <div class="content"> Hello world </div>
-                    </div>
+            <div class='aside_left'>
+                <div class="create_conversation">
+                    <button class='btn cursor_pointer' id='create_conversation'> + New conversation</button>
                 </div>
-                <form id = "send_messages_form">
-                    <div class="input_wrapper">
-                        <input type="text" placeholder="Type a message" name = 'message'> </input>
+                <div class="list_conversations">
+                    <div class="conversation current cursor_pointer">
+                        <div class="left_conversation_title"> First conversation </div>
+                        <div class="num_of_user">10 users</div>
                     </div>
-                    <button type = 'submit'> Send </button>
+                    <div class="conversation cursor_pointer">
+                        <div class="left_conversation_title"> Second conversation </div>
+                        <div class="num_of_user">3 users</div>
+                    </div>
+                    <div class="conversation cursor_pointer">
+                        <div class="left_conversation_title"> Third conversation </div>
+                        <div class="num_of_user">5 users</div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="conversation_detail">
+                <div class="conversation_title"> Fisrt conversation</div>
+                <div class="list_messages"></div>
+                <form id="send_messages_form">
+                    <div class="input_wrapper">
+                        <input type="text" placeholder="Type a message" name='message'> </input>
+                    </div>
+                    <button type='submit'> <i class="fas fa-paper-plane fa-2x"></i> </button>
                 </form>
             </div>
         </div>
     </div>
-</body>
+</body> -->
+    <div class="create_conversation_wrapper">
+        <div class="header">MindX chat</div>
+        <form id='create>conversation_form' style="width :60%; margin: auto; margin-top: 20px;">
+            <h4> Create a new conversation</h4>
+            <div class="input_wrapper">
+                <input type='text' placeholder="Conservation title" name='title'>
+                <div class="error" id='create_conversation_title_error'> </div>
+            </div>
+            <div class="input_wrapper">
+                <input type='text' placeholder="Friend email" name='email'>
+                <div class="error" id='create_conversation_email_error'> </div>
+            </div>
+            <button class='btn'>Save</button>
+            <button class='btn btn-bg-light' type='button' id='redirect_to_chat'>Cancel</button>
+
+        </form>
+    </div>
 
 </html>

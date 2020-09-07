@@ -35,7 +35,7 @@ component.registerPage = `
         </form>
     </div>`
 component.logInPage = `
-       <div class="login_container">
+    <div class="login_container">
         <form id = 'login_form'>
             <div class="login_header">MindX chat</div>
             <div class="input_wrapper">
@@ -54,19 +54,46 @@ component.logInPage = `
     </div> 
 `
 component.chatPage = `
-        <div class="chat_container">
+    <div class="chat_container">
         <div class="header"> MindX chat </div>
         <div class="main">
-            <div class="conversation_detail"> 
+            <div class='aside_left'>
+                <div class="create_conversation">
+                    <button class='btn cursor_pointer' id='create_conversation'> + New conversation</button>
+                </div>
+                <div class="list_conversations">
+                </div>
+            </div>
+            <div class="conversation_detail">
                 <div class="conversation_title"> Fisrt conversation</div>
                 <div class="list_messages"></div>
-                <form id = "send_messages_form">
+                <form id="send_messages_form">
                     <div class="input_wrapper">
-                        <input type="text" placeholder="Type a message" name = 'message'> </input>
+                        <input type="text" placeholder="Type a message" name='message'> </input>
                     </div>
-                    <button type = 'submit'> <i class="fas fa-paper-plane fa-2x"></i> </button>
+                    <button type='submit'> <i class="fas fa-paper-plane fa-2x"></i> </button>
                 </form>
             </div>
         </div>
+    </div>
+`
+component.createConversationPage = `
+    <div class="create_conversation_wrapper">
+        <div class="header">MindX chat</div>
+        <form id='create_conversation_form' style="width :60%; margin: auto; margin-top: 20px;">
+            <h4 style = "margin-bottom: 20px;
+            "> Create a new conversation</h4>
+            <div class="input_wrapper">
+                <input type='text' placeholder="Conservation title" name='title'>
+                <div class="error" id='create_conversation_title_error'> </div>
+            </div>
+            <div class="input_wrapper">
+                <input type='text' placeholder="Friend email" name='email'>
+                <div class="error" id='create_conversation_email_error'> </div>
+            </div>
+            <button class='btn'>Save</button>
+            <button class='btn btn-bg-light' type='button' id='redirect_to_chat'>Cancel</button>
+
+        </form>
     </div>
 `

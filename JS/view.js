@@ -46,7 +46,7 @@ view.setActiveScreen = (screenName) => {
             const sendMessageForm = document.getElementById('send_messages_form')
             sendMessageForm.addEventListener('submit', (e) => {
                 e.preventDefault()
-                console.log(sendMessageForm.message.value)
+                // console.log(sendMessageForm.message.value)
                 const message = {
                     content: sendMessageForm.message.value,
                     owner: model.currentUser.email,
@@ -55,9 +55,29 @@ view.setActiveScreen = (screenName) => {
                 if (message.content.trim() !== '') {
                     model.addMessage(message)
                 }
+                console.log(model.currentConversation)
+
 
             })
             model.listenConversationChange()
+            document.getElementById('create_conversation').onclick = () => {
+                view.setActiveScreen('createConversationPage')
+            }
+            break;
+        case 'createConversationPage':
+            console.log('123')
+            document.getElementById('app').innerHTML = component.createConversationPage
+            const createNewConversationForm = document.getElementById('create_conversation_form')
+            createNewConversationForm.addEventListener('submit', (e) => {
+                e.preventDefault()
+                const newConversation = {
+                    title: createNewConversationForm.title.value,
+                    createdAt: new Date().toISOString(),
+                    user: [model.currentUser.email, createNewConversationForm.email.value],
+                }
+                firebase.firestore().collection('conversations').add(newConversation)
+                console.log(newConversation)
+            })
             break;
     }
 }
@@ -84,6 +104,8 @@ view.addMessage = (message) => {
     document.querySelector('.list_messages').appendChild(messageWrapper)
 }
 view.showCurrentConversation = () => {
+    document.querySelector(".conversation_title").innerHTML = model.currentConversation.title
+    document.querySelector('.list_messages').innerHTML = ''
     for (message of model.currentConversation.messages) {
         view.addMessage(message)
     }
@@ -93,4 +115,29 @@ view.showCurrentConversation = () => {
 view.scrollToEndElement = () => {
     const element = document.querySelector('.list_messages')
     element.scrollTop = element.scrollHeight
+}
+view.showConversations = () => {
+    for (conversation of model.conversations) {
+        view.addConversation(conversation)
+    }
+}
+view.addConversation = (conversation) => {
+    const conversationWrapper = document.createElement('div')
+    conversationWrapper.classList.add('conversation')
+    conversationWrapper.classList.add('cursor_pointer')
+    if (conversation.id === model.currentConversation.id) {
+        conversationWrapper.classList.add('current')
+    }
+    conversationWrapper.innerHTML = `
+    <div class="left_conversation_title"> ${conversation.title}</div>
+    <div class="num_of_user">${conversation.users.length} users </div>
+    `
+    conversationWrapper.addEventListener('click', () => {
+        model.currentConversation = model.conversations.filter(item => item.id === conversation.id)[0]
+        console.log(model.currentConversation)
+        view.showCurrentConversation()
+        document.querySelector('.conversation.current').classList.remove('current')
+        conversationWrapper.classList.add('current')
+    })
+    document.querySelector('.list_conversations').appendChild(conversationWrapper)
 }

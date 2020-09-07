@@ -11,9 +11,9 @@ window.onload = () => {
          appId : "1: 821119421609: web: 7d27a30f6a0f06d17aedb8" 
     }; // Initialize Firebase   
     firebase . initializeApp ( firebaseConfig );
-    console.log (firebase.app())
+    // console.log (firebase.app())
     firebase.auth().onAuthStateChanged((user) => {
-        console.log(user)
+        // console.log(user)
         if (user) {
             model.currentUser= {
                 displayName : user.displayName,

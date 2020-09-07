@@ -3,7 +3,7 @@ const model = {
 }
 model.infoFromDatabase = undefined
 model.currentUser = undefined
-model.converastions = []
+model.conversations = []
 model.currentConversation = undefined
 model.register = async (data) => {
     try {
@@ -52,11 +52,12 @@ model.getInfoFromDatabase = async () => {
 }
 model.getConversations = async () => {
     const response = await firebase.firestore().collection('conversations').where('users', 'array-contains', model.currentUser.email).get()
-    model.converastions = getManyDocument(response)
-    console.log(model.converastions)
-    if (model.converastions.length > 0) {
-        model.currentConversation = model.converastions[0]
+    model.conversations = getManyDocument(response)
+    // console.log(model.conversations)
+    if (model.conversations.length > 0) {
+        model.currentConversation = model.conversations[0]
         view.showCurrentConversation()
+        view.showConversations( )
     }
 }
 model.addMessage = (message) => {
@@ -72,7 +73,7 @@ model.listenConversationChange = () => {
             isFirstRun = false
             return
         }
-        console.log(snapshot.docChanges())
+        // console.log(snapshot.docChanges())
         for (oneChange of snapshot.docChanges()) {
             const docData = getOneDocument(oneChange.doc)
             console.log(model.currentConversation)
@@ -80,6 +81,11 @@ model.listenConversationChange = () => {
                 model.currentConversation = docData
                 view.addMessage(model.currentConversation.messages[model.currentConversation.messages.length - 1])
                 view.scrollToEndElement()
+            }
+            for (let i=0; i<model.conversations.length -1; i++) {
+                if (model.conversations[i].id === docData.id) {
+                    model.conversations[i] = docData
+                }
             }
         }
     })
