@@ -55,3 +55,30 @@ controller.logIn = (data) => {
 controller.chatPage = () => {
     
 }
+controller.createConversation = (data) => {
+    if (data.title.trim() === '' ) {
+        view.setErrorMessage('create_conversation_title_error','Please input title')
+    }
+    else {
+        view.setErrorMessage('create_conversation_title_error','')
+    }
+    if (data.email.trim() === '' ) {
+        view.setErrorMessage('create_conversation_email_error','Please input email')
+    }
+    else {
+        view.setErrorMessage('create_conversation_email_error','')
+    }
+    if (data.title.trim() !== '' && data.email.trim() !== '') {
+        model.createConversation(data)
+    }
+}
+controller.addUser = (email) => {
+    if (email.trim() === '')
+        view.setErrorMessage('email_error',"Please input email")
+    else {
+        view.setErrorMessage('email_error',"")
+    }
+    if (email.trim() !== '') {
+        model.addUser(email)
+    }
+}

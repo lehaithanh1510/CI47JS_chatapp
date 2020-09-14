@@ -19,3 +19,8 @@
     font-family: sans-serif;
     margin-bottom: 20px;
 }
+@media screen and (max-width :768px) {
+    .login_container #login_form {
+        width : 100%
+    }
+}

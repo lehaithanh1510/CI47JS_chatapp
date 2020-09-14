@@ -74,6 +74,16 @@ component.chatPage = `
                     <button type='submit'> <i class="fas fa-paper-plane fa-2x"></i> </button>
                 </form>
             </div>
+            <div class="aside_right">
+              <div class ='list_users'> </div>
+                <form class= 'mt-1' id = 'add_user_form'>
+                    <div class="input_wrapper"> 
+                        <input type = 'text' name = 'email' placeholder= 'Friend email'> 
+                        <div class ='error' id = email_error></div>
+                    </div>
+                    <button class= 'btn' >Add</button>
+                </form>
+            </div>
         </div>
     </div>
 `
@@ -81,8 +91,8 @@ component.createConversationPage = `
     <div class="create_conversation_wrapper">
         <div class="header">MindX chat</div>
         <form id='create_conversation_form' style="width :60%; margin: auto; margin-top: 20px;">
-            <h4 style = "margin-bottom: 20px;
-            "> Create a new conversation</h4>
+            <h3 style = "margin-bottom: 20px;
+            "> Create a new conversation</h3>
             <div class="input_wrapper">
                 <input type='text' placeholder="Conservation title" name='title'>
                 <div class="error" id='create_conversation_title_error'> </div>
